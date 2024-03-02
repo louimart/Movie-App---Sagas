@@ -26,7 +26,7 @@ function MovieList() {
     <main>
       <h1>MovieList</h1>
       <section className="movies">
-        {movies.map((movie, index) => {
+        {movies.map((movie) => {
           return (
             <div
               data-testid="movieItem"
