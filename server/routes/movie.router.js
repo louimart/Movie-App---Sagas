@@ -18,28 +18,30 @@ router.get('/', (req, res) => {
 
 });
 
+// router to get movie details
 router.get('/:id', (req, res) => {
-// update query ******
-  // const query = `
-  //   SELECT * FROM "movies"
-  //     ORDER BY "title" ASC;
-  // `;
-  pool.query(query)
+// update query to get movie details by id
+  const sqlText = `
+    SELECT * FROM "movies"
+    WHERE "id"=$1;
+  `;
+  const sqlValue = [req.params.id];
+
+  pool.query(sqlText, sqlValue)
     .then(result => {
       res.send(result.rows);
     })
     .catch(err => {
-      console.log('ERROR: Get all movies', err);
+      console.log('ERROR: Get movie details', err);
       res.sendStatus(500)
     })
-
 });
 
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
   const insertMovieQuery = `
-    INSERT INTO "movies" 
+    INSERT INTO "movies"
       ("title", "poster", "description")
       VALUES
       ($1, $2, $3)
@@ -59,7 +61,7 @@ router.post('/', (req, res) => {
 
       // Now handle the genre reference:
       const insertMovieGenreQuery = `
-        INSERT INTO "movies_genres" 
+        INSERT INTO "movies_genres"
           ("movie_id", "genre_id")
           VALUES
           ($1, $2);
