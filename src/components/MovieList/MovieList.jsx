@@ -16,10 +16,9 @@ function MovieList() {
 
   const handleClickToDetail = (event) => {
     event.preventDefault();
-    console.log('details page for', event.target.alt);
-    // alert(`Going to Details, ${event.target.alt}`);
+      // alert(`Going to Details, ${event.Target}`);
     // route to the clicked movie via it's id
-    history.push(`/details/${event.target.id}`);
+    history.push(`/details/${event.currentTarget.id}`);
   };
 
   return (
@@ -32,10 +31,10 @@ function MovieList() {
               data-testid="movieItem"
               key={movie.id}
               onClick={handleClickToDetail}
-              movieItem={movie}
-            >
-              <h3>{movie.title}</h3>
-              <img src={movie.poster} alt={movie.title} />
+              id={movie.id}
+              >
+              <h3>{movie.title}, {movie.id}</h3>
+              <img src={movie.poster} alt={movie.title} data-testid="toDetails"/>
             </div>
           );
         })}
