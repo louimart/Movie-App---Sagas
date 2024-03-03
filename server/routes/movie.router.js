@@ -15,7 +15,6 @@ router.get('/', (req, res) => {
       console.log('ERROR: Get all movies', err);
       res.sendStatus(500)
     })
-
 });
 
 // router to get movie details
@@ -25,6 +24,7 @@ router.get('/:id', (req, res) => {
     SELECT * FROM "movies"
     WHERE "id"=$1;
   `;
+  // another option to get GENRES ==> array_agg("genre".name) between SELECT/FROM, then JOIN tables
   const sqlValue = [req.params.id];
 
   pool.query(sqlText, sqlValue)

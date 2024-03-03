@@ -16,14 +16,13 @@ function MovieList() {
 
   const handleClickToDetail = (event) => {
     event.preventDefault();
-      // alert(`Going to Details, ${event.Target}`);
-    // route to the clicked movie via it's id
-    history.push(`/details/${event.currentTarget.id}`);
+    // route to the clicked movie by it's id
+    history.push(`/movies/${event.currentTarget.id}`);
   };
 
   return (
     <main>
-      <h1>MovieList</h1>
+      <h1>Playing now</h1>
       <section className="movies">
         {movies.map((movie) => {
           return (
