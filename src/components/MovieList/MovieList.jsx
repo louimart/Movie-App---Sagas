@@ -23,21 +23,22 @@ function MovieList() {
   return (
     <main>
       <h1>Playing now</h1>
-      <section className="movies">
+      <div className="movies">
         {movies.map((movie) => {
           return (
             <div
+              className="movie-item"
               data-testid="movieItem"
               key={movie.id}
               onClick={handleClickToDetail}
               id={movie.id}
               >
-              <h3>{movie.title}, {movie.id}</h3>
               <img src={movie.poster} alt={movie.title} data-testid="toDetails"/>
+              <h3 className='movie-title'>{movie.title}</h3>
             </div>
           );
         })}
-      </section>
+      </div>
     </main>
   );
 }

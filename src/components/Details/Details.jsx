@@ -35,8 +35,8 @@ function Details() {
       <h1>Movie Details!</h1>
       <section>
         <img src={movieDetails.poster} alt={movieDetails.title} />
-        <h2>{movieDetails.title}</h2>
-        <body>{movieDetails.description}</body>
+        <h2 className='detail-title'>{movieDetails.title}</h2>
+        <body className='detail-description'>{movieDetails.description}</body>
         <h3>Genre</h3>
         <div>
           {movieGenres.map((genre) => {
