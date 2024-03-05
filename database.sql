@@ -75,3 +75,15 @@ VALUES
 (12,6), (12,3),           -- Social Net
 (13,6), (13,10), (13,1),  -- Titanic
 (14,1), (14,2), (14,4);   -- Toy Story
+
+-- query below recalls all genres for a given movie in one array aggregate instead of separate line items for each instance of genre
+SELECT array_agg("genres".name) AS "detail_genres" FROM "movies_genres"
+JOIN "genres" ON "movies_genres".genre_id="genres".id
+JOIN "movies" ON "movies_genres".movie_id="movies".id
+WHERE "movies".id = 1;
+
+-- recalls genres for a given movie by its id
+SELECT "movies".id, "genres".name FROM "movies_genres"
+JOIN "genres" ON "movies_genres".genre_id="genres".id
+JOIN "movies" ON "movies_genres".movie_id="movies".id
+WHERE "movies".id = 1;
